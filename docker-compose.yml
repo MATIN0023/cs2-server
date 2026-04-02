@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  cs2:
+    image: joedwards32/cs2:latest
+    container_name: cs2-server
+    restart: unless-stopped
+
+    ports:
+      - "27015:27015/udp"
+      - "27015:27015/tcp"
+
+    volumes:
+      - ./game:/home/steam/cs2   # مسیر مهم
+
+    environment:
+      - SRCDS_MAP=de_dust2
+      - SRCDS_MAXPLAYERS=16
+      - SRCDS_PORT=27015
+      - SRCDS_LAN=0
